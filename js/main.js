@@ -238,7 +238,7 @@
     st.innerHTML = words.map(function (w) { return '<span class="w">' + w + "</span>"; }).join(" ");
     gsap.to(".scrub-words .w", {
         opacity: 1, stagger: 0.1, ease: "none",
-        scrollTrigger: { trigger: st, start: "top 78%", end: "bottom 45%", scrub: true }
+        scrollTrigger: { trigger: st, start: "top 85%", end: "bottom 55%", scrub: true }
     });
 
     /* ---------- Generic reveals ---------- */
@@ -246,7 +246,7 @@
         start: "top 88%",
         onEnter: function (els) { gsap.to(els, { opacity: 1, y: 0, duration: 1.2, stagger: 0.1, ease: EASE, overwrite: true }); }
     });
-    gsap.from(".xp", { y: 50, opacity: 0, duration: 1, stagger: 0.06, ease: EASE, scrollTrigger: { trigger: ".expertise", start: "top 85%" } });
+    gsap.from(".xp", { y: 30, opacity: 0, duration: 0.9, stagger: 0.05, ease: EASE, scrollTrigger: { trigger: ".expertise", start: "top 85%" } });
     gsap.from(".p", { y: 40, opacity: 0, duration: 1, stagger: 0.05, ease: EASE, scrollTrigger: { trigger: ".plist", start: "top 85%" } });
     gsap.from(".clist li", { x: 40, opacity: 0, duration: 1, stagger: 0.06, ease: EASE, scrollTrigger: { trigger: ".clist", start: "top 85%" } });
     gsap.from(".lang__bar i", { scaleX: 0, duration: 1.6, stagger: 0.15, ease: "power3.inOut", scrollTrigger: { trigger: ".creds", start: "top 75%" } });
