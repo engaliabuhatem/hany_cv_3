@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link href="css/site.css?v=9" rel="stylesheet">
+    <link href="css/site.css?v=10" rel="stylesheet">
     <link rel="icon" href="images/favicon.png?v=2">
 
     <script>
@@ -212,21 +212,141 @@
             </div>
 
             <ul class="plist">
-                <li class="p" data-cat="healthcare" data-id="p1"><button type="button" class="p__btn" data-cursor="view"><span class="p__no">01</span><span class="p__name">Sana'a University Educational Hospital</span><span class="p__loc">Sana'a, Yemen</span><span class="p__date">2014 – Now</span></button></li>
-                <li class="p" data-cat="healthcare" data-id="p2"><button type="button" class="p__btn" data-cursor="view"><span class="p__no">02</span><span class="p__name">Two Hospitals in Burao &amp; Berbera</span><span class="p__loc">Somaliland</span><span class="p__date">2018 – Now</span></button></li>
-                <li class="p" data-cat="planning" data-id="p3"><button type="button" class="p__btn" data-cursor="view"><span class="p__no">03</span><span class="p__name">Socotra Development Master Plan</span><span class="p__loc">Socotra, Yemen</span><span class="p__date">2017 – Now</span></button></li>
-                <li class="p" data-cat="planning" data-id="p4"><button type="button" class="p__btn" data-cursor="view"><span class="p__no">04</span><span class="p__name">Wadi Araba Integrated Master Plan</span><span class="p__loc">Jordan</span><span class="p__date">2015 – 2016</span></button></li>
-                <li class="p" data-cat="infrastructure" data-id="p5"><button type="button" class="p__btn" data-cursor="view"><span class="p__no">05</span><span class="p__name">Berbera Slaughterhouse</span><span class="p__loc">Berbera, Somaliland</span><span class="p__date">2011 – 2017</span></button></li>
-                <li class="p" data-cat="healthcare" data-id="p6"><button type="button" class="p__btn" data-cursor="view"><span class="p__no">06</span><span class="p__name">Sheikh Khalifa Hospital Expansion</span><span class="p__loc">Socotra, Yemen</span><span class="p__date">2014 – 2016</span></button></li>
-                <li class="p" data-cat="healthcare" data-id="p7"><button type="button" class="p__btn" data-cursor="view"><span class="p__no">07</span><span class="p__name">Al Amal Cancer Hospital</span><span class="p__loc">Little Aden, Yemen</span><span class="p__date">2015</span></button></li>
-                <li class="p" data-cat="healthcare" data-id="p8"><button type="button" class="p__btn" data-cursor="view"><span class="p__no">08</span><span class="p__name">Al Gomhouria Emergency Hospital</span><span class="p__loc">Aden, Yemen</span><span class="p__date">Design</span></button></li>
-                <li class="p" data-cat="housing" data-id="p9"><button type="button" class="p__btn" data-cursor="view"><span class="p__no">09</span><span class="p__name">1,600 Housing Units</span><span class="p__loc">Balbala, Djibouti</span><span class="p__date">2012 – 2014</span></button></li>
-                <li class="p" data-cat="housing" data-id="p10"><button type="button" class="p__btn" data-cursor="view"><span class="p__no">10</span><span class="p__name">Emirates Red Crescent Housing</span><span class="p__loc">Hadramout, Yemen</span><span class="p__date">2009 – 2012</span></button></li>
-                <li class="p" data-cat="planning" data-id="p11"><button type="button" class="p__btn" data-cursor="view"><span class="p__no">11</span><span class="p__name">Aden City Master Plan Update</span><span class="p__loc">Aden, Yemen</span><span class="p__date">2004 – 2005</span></button></li>
+                <li class="p p--wide" data-cat="healthcare" data-id="p1">
+                    <button type="button" class="p__btn" data-cursor="view" aria-label="Sana'a University Educational Hospital — open details">
+                        <span class="p__media"><img src="images/projects/hospital-campus.svg" alt="" loading="lazy" width="640" height="400"></span>
+                        <span class="p__top"><span class="p__no">01</span><span class="p__tag">Healthcare</span></span>
+                        <span class="p__body">
+                            <span class="p__stat">90,855 m²<small>Teaching-hospital campus, 7 buildings</small></span>
+                            <span class="p__name">Sana'a University Educational Hospital</span>
+                            <span class="p__meta"><span>Sana'a, Yemen</span><span>2014 – Now</span></span>
+                        </span>
+                        <span class="p__go" aria-hidden="true">→</span>
+                    </button>
+                </li>
+                <li class="p" data-cat="healthcare" data-id="p2">
+                    <button type="button" class="p__btn" data-cursor="view" aria-label="Two Hospitals in Burao and Berbera — open details">
+                        <span class="p__media"><img src="images/projects/hospital-low.svg" alt="" loading="lazy" width="640" height="400"></span>
+                        <span class="p__top"><span class="p__no">02</span><span class="p__tag">Healthcare</span></span>
+                        <span class="p__body">
+                            <span class="p__stat">2 × 50 beds<small>UAE-funded</small></span>
+                            <span class="p__name">Two Hospitals in Burao &amp; Berbera</span>
+                            <span class="p__meta"><span>Somaliland</span><span>2018 – Now</span></span>
+                        </span>
+                        <span class="p__go" aria-hidden="true">→</span>
+                    </button>
+                </li>
+                <li class="p" data-cat="planning" data-id="p3">
+                    <button type="button" class="p__btn" data-cursor="view" aria-label="Socotra Development Master Plan — open details">
+                        <span class="p__media"><img src="images/projects/island-plan.svg" alt="" loading="lazy" width="640" height="400"></span>
+                        <span class="p__top"><span class="p__no">03</span><span class="p__tag">Master planning</span></span>
+                        <span class="p__body">
+                            <span class="p__stat">3,796 km²<small>Island master plan</small></span>
+                            <span class="p__name">Socotra Development Master Plan</span>
+                            <span class="p__meta"><span>Socotra, Yemen</span><span>2017 – Now</span></span>
+                        </span>
+                        <span class="p__go" aria-hidden="true">→</span>
+                    </button>
+                </li>
+                <li class="p" data-cat="planning" data-id="p4">
+                    <button type="button" class="p__btn" data-cursor="view" aria-label="Wadi Araba Integrated Master Plan — open details">
+                        <span class="p__media"><img src="images/projects/valley-plan.svg" alt="" loading="lazy" width="640" height="400"></span>
+                        <span class="p__top"><span class="p__no">04</span><span class="p__tag">Master planning</span></span>
+                        <span class="p__body">
+                            <span class="p__stat">~2,200 km²<small>30-year land-use plan</small></span>
+                            <span class="p__name">Wadi Araba Integrated Master Plan</span>
+                            <span class="p__meta"><span>Jordan</span><span>2015 – 2016</span></span>
+                        </span>
+                        <span class="p__go" aria-hidden="true">→</span>
+                    </button>
+                </li>
+                <li class="p" data-cat="infrastructure" data-id="p5">
+                    <button type="button" class="p__btn" data-cursor="view" aria-label="Berbera Slaughterhouse — open details">
+                        <span class="p__media"><img src="images/projects/infrastructure.svg" alt="" loading="lazy" width="640" height="400"></span>
+                        <span class="p__top"><span class="p__no">05</span><span class="p__tag">Infrastructure</span></span>
+                        <span class="p__body">
+                            <span class="p__stat">Design → Build<small>Studies, design &amp; construction</small></span>
+                            <span class="p__name">Berbera Slaughterhouse</span>
+                            <span class="p__meta"><span>Berbera, Somaliland</span><span>2011 – 2017</span></span>
+                        </span>
+                        <span class="p__go" aria-hidden="true">→</span>
+                    </button>
+                </li>
+                <li class="p" data-cat="healthcare" data-id="p6">
+                    <button type="button" class="p__btn" data-cursor="view" aria-label="Sheikh Khalifa Hospital Expansion — open details">
+                        <span class="p__media"><img src="images/projects/hospital-low.svg" alt="" loading="lazy" width="640" height="400"></span>
+                        <span class="p__top"><span class="p__no">06</span><span class="p__tag">Healthcare</span></span>
+                        <span class="p__body">
+                            <span class="p__stat">3 new buildings<small>Expansion &amp; rehabilitation</small></span>
+                            <span class="p__name">Sheikh Khalifa Hospital Expansion</span>
+                            <span class="p__meta"><span>Socotra, Yemen</span><span>2014 – 2016</span></span>
+                        </span>
+                        <span class="p__go" aria-hidden="true">→</span>
+                    </button>
+                </li>
+                <li class="p" data-cat="healthcare" data-id="p7">
+                    <button type="button" class="p__btn" data-cursor="view" aria-label="Al Amal Cancer Hospital — open details">
+                        <span class="p__media"><img src="images/projects/hospital-tower.svg" alt="" loading="lazy" width="640" height="400"></span>
+                        <span class="p__top"><span class="p__no">07</span><span class="p__tag">Healthcare</span></span>
+                        <span class="p__body">
+                            <span class="p__stat">USD 13M<small>Construction cost</small></span>
+                            <span class="p__name">Al Amal Cancer Hospital</span>
+                            <span class="p__meta"><span>Little Aden, Yemen</span><span>2015</span></span>
+                        </span>
+                        <span class="p__go" aria-hidden="true">→</span>
+                    </button>
+                </li>
+                <li class="p" data-cat="healthcare" data-id="p8">
+                    <button type="button" class="p__btn" data-cursor="view" aria-label="Al Gomhouria Emergency Hospital — open details">
+                        <span class="p__media"><img src="images/projects/hospital-tower.svg" alt="" loading="lazy" width="640" height="400"></span>
+                        <span class="p__top"><span class="p__no">08</span><span class="p__tag">Healthcare</span></span>
+                        <span class="p__body">
+                            <span class="p__stat">150 beds<small>~9,000 m² built-up</small></span>
+                            <span class="p__name">Al Gomhouria Emergency Hospital</span>
+                            <span class="p__meta"><span>Aden, Yemen</span><span>Design</span></span>
+                        </span>
+                        <span class="p__go" aria-hidden="true">→</span>
+                    </button>
+                </li>
+                <li class="p" data-cat="housing" data-id="p9">
+                    <button type="button" class="p__btn" data-cursor="view" aria-label="1,600 Housing Units — open details">
+                        <span class="p__media"><img src="images/projects/housing.svg" alt="" loading="lazy" width="640" height="400"></span>
+                        <span class="p__top"><span class="p__no">09</span><span class="p__tag">Housing</span></span>
+                        <span class="p__body">
+                            <span class="p__stat">1,600 units<small>Social housing</small></span>
+                            <span class="p__name">1,600 Housing Units</span>
+                            <span class="p__meta"><span>Balbala, Djibouti</span><span>2012 – 2014</span></span>
+                        </span>
+                        <span class="p__go" aria-hidden="true">→</span>
+                    </button>
+                </li>
+                <li class="p" data-cat="housing" data-id="p10">
+                    <button type="button" class="p__btn" data-cursor="view" aria-label="Emirates Red Crescent Housing — open details">
+                        <span class="p__media"><img src="images/projects/housing-vernacular.svg" alt="" loading="lazy" width="640" height="400"></span>
+                        <span class="p__top"><span class="p__no">10</span><span class="p__tag">Housing</span></span>
+                        <span class="p__body">
+                            <span class="p__stat">1,000 units<small>USD 26M · mud-brick &amp; stone</small></span>
+                            <span class="p__name">Emirates Red Crescent Housing</span>
+                            <span class="p__meta"><span>Hadramout, Yemen</span><span>2009 – 2012</span></span>
+                        </span>
+                        <span class="p__go" aria-hidden="true">→</span>
+                    </button>
+                </li>
+                <li class="p" data-cat="planning" data-id="p11">
+                    <button type="button" class="p__btn" data-cursor="view" aria-label="Aden City Master Plan Update — open details">
+                        <span class="p__media"><img src="images/projects/city-plan.svg" alt="" loading="lazy" width="640" height="400"></span>
+                        <span class="p__top"><span class="p__no">11</span><span class="p__tag">Master planning</span></span>
+                        <span class="p__body">
+                            <span class="p__stat">Aden<small>With Halcrow (UK)</small></span>
+                            <span class="p__name">Aden City Master Plan Update</span>
+                            <span class="p__meta"><span>Aden, Yemen</span><span>2004 – 2005</span></span>
+                        </span>
+                        <span class="p__go" aria-hidden="true">→</span>
+                    </button>
+                </li>
             </ul>
             <p class="note">Drawings are illustrative diagrams, not records of the built projects.</p>
 
-            <div class="peek" aria-hidden="true"><img alt="" width="640" height="400"></div>
         </section>
 
         <!-- Project details (rendered into the dialog by main.js) -->
@@ -393,7 +513,7 @@
     <script src="js/vendor/gsap.min.js" defer></script>
     <script src="js/vendor/ScrollTrigger.min.js" defer></script>
     <script src="js/vendor/lenis.min.js" defer></script>
-    <script src="js/main.js?v=9" defer></script>
+    <script src="js/main.js?v=10" defer></script>
     <script type="module" src="js/hero3d.js?v=9"></script>
     <script type="module" src="js/globe.js?v=9"></script>
 </body>

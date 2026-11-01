@@ -249,7 +249,8 @@
         onEnter: function (els) { gsap.to(els, { opacity: 1, y: 0, duration: 1.2, stagger: 0.1, ease: EASE, overwrite: true }); }
     });
     gsap.from(".xp", { y: 30, opacity: 0, duration: 0.9, stagger: 0.05, ease: EASE, scrollTrigger: { trigger: ".expertise", start: "top 85%" } });
-    gsap.from(".p", { y: 40, opacity: 0, duration: 1, stagger: 0.05, ease: EASE, scrollTrigger: { trigger: ".plist", start: "top 85%" } });
+    ScrollTrigger.batch(".p", { start: "top 90%", onEnter: function (els) { gsap.fromTo(els, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 1.1, stagger: 0.08, ease: EASE, overwrite: true }); } });
+    gsap.set(".p", { opacity: 0 });
     gsap.from(".clist li", { x: 40, opacity: 0, duration: 1, stagger: 0.06, ease: EASE, scrollTrigger: { trigger: ".clist", start: "top 85%" } });
     gsap.from(".lang__bar i", { scaleX: 0, duration: 1.6, stagger: 0.15, ease: "power3.inOut", scrollTrigger: { trigger: ".creds", start: "top 75%" } });
     document.querySelectorAll(".sec__head").forEach(function (h) {
@@ -298,27 +299,19 @@
         }
     });
 
-    /* ---------- Project drawing that follows the cursor ---------- */
-    var peek = document.querySelector(".peek");
-    var peekImg = peek.querySelector("img");
-    if (matchMedia("(hover: hover) and (min-width: 900px)").matches) {
-        var px = gsap.quickTo(peek, "x", { duration: 0.7, ease: "power3.out" });
-        var py = gsap.quickTo(peek, "y", { duration: 0.7, ease: "power3.out" });
-        var prot = gsap.quickTo(peek, "rotation", { duration: 0.9, ease: "power3.out" });
-        var lastX = 0;
-        gsap.set(peek, { xPercent: -50, yPercent: -50 });
-        var plist = document.querySelector(".plist");
-        plist.addEventListener("pointermove", function (e) {
-            px(e.clientX + 40); py(e.clientY); prot(gsap.utils.clamp(-8, 8, (e.clientX - lastX) * 0.4)); lastX = e.clientX;
-        });
+    /* ---------- Project cards: gentle 3D tilt toward the pointer ---------- */
+    if (!lite && matchMedia("(hover: hover) and (min-width: 900px)").matches) {
         projects.forEach(function (p) {
-            p.addEventListener("pointerenter", function () {
-                var art = tpl.querySelector('article[data-id="' + p.dataset.id + '"]');
-                peekImg.src = "images/projects/" + art.dataset.img + ".svg";
-                peek.classList.add("is-on");
+            var card = p.querySelector(".p__btn");
+            var tx = gsap.quickTo(card, "rotationY", { duration: 0.6, ease: "power3.out" });
+            var ty = gsap.quickTo(card, "rotationX", { duration: 0.6, ease: "power3.out" });
+            card.addEventListener("pointermove", function (e) {
+                var r = card.getBoundingClientRect();
+                tx(((e.clientX - r.left) / r.width - 0.5) * 7);
+                ty(-((e.clientY - r.top) / r.height - 0.5) * 7);
             });
+            card.addEventListener("pointerleave", function () { tx(0); ty(0); });
         });
-        plist.addEventListener("pointerleave", function () { peek.classList.remove("is-on"); });
     }
 
     /* ---------- Custom cursor ---------- */
