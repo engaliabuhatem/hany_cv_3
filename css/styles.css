@@ -14,7 +14,6 @@ Table Of Contents:
 - Questions
 - Contact
 - Footer 
-- Copyright
 - Back To Top Button
 - Extra Pages
 - Media Queries
@@ -888,26 +887,6 @@ input[type='checkbox'] {
 
 .footer .fa-stack:hover .fa-stack-2x {
     color: #ffffff;
-}
-
-
-/*********************/
-/*     Copyright     */
-/*********************/
-.copyright {
-	padding-top: 1rem;
-	padding-bottom: 1rem;
-	background-color: #24262a;
-	text-align: center;
-}
-
-.copyright .p-small {
-	color: #9da6ac;
-	text-align: center;
-}
-
-.copyright a {
-	color: #9da6ac;
 }
 
 
