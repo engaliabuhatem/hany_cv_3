@@ -193,7 +193,7 @@
         });
         lt.to(paths, { strokeDashoffset: 0, duration: 1.1, stagger: 0.08, ease: "power2.inOut" }, 0)
           .to(count, { v: 100, duration: 1.3, ease: "power2.inOut", onUpdate: function () { countEl.textContent = Math.round(count.v); } }, 0)
-          .to(".loader__mark", { fill: "#EDE9E2", duration: 0.35 }, 1.05)
+          .to(".loader__mark", { fill: "#F2EEE6", duration: 0.35 }, 1.05)
           .to(".loader", { clipPath: "inset(0 0 100% 0)", duration: 0.9, ease: "expo.inOut" }, 1.45)
           .add(heroIn, 1.75);
     } else {

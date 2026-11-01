@@ -19,7 +19,7 @@ const PLACES = {
     dj: { name: "Djibouti", lat: 11.59, lon: 43.15 },
 };
 const R = 5;
-const ACCENT = 0xe0703a, LINE = 0xede9e2, BG = 0x0b0d10;
+const ACCENT = 0xc9a45c, LINE = 0xf2eee6, BG = 0x0a1322;
 
 function vec(lat, lon, r = R) {
     const la = THREE.MathUtils.degToRad(lat), lo = THREE.MathUtils.degToRad(lon);
@@ -63,7 +63,7 @@ async function start() {
     scene.add(globe);
 
     /* Occluding sphere so back-side lines are hidden */
-    globe.add(new THREE.Mesh(new THREE.SphereGeometry(R * 0.995, 64, 48), new THREE.MeshBasicMaterial({ color: 0x0f1217 })));
+    globe.add(new THREE.Mesh(new THREE.SphereGeometry(R * 0.995, 64, 48), new THREE.MeshBasicMaterial({ color: 0x0d182a })));
 
     /* Rim glow (fresnel) */
     const rim = new THREE.Mesh(

@@ -9,12 +9,12 @@ const host = document.querySelector(".hero__canvas");
 const section = document.querySelector(".hero");
 
 const COLORS = {
-    bg: 0x0b0d10,
-    line: 0xede9e2,
-    accent: 0xe0703a,
-    solid: 0x8f8a83,
-    solidHospital: 0xf4efe7,
-    ink: 0x2a2826,
+    bg: 0x0a1322,
+    line: 0xf2eee6,
+    accent: 0xc9a45c,
+    solid: 0x7d889a,
+    solidHospital: 0xf4efe6,
+    ink: 0x1b2433,
 };
 
 const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
@@ -44,8 +44,8 @@ function start() {
     const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 200);
 
     /* Lights */
-    scene.add(new THREE.HemisphereLight(0xfff4e6, 0x1a1d22, 1.1));
-    const sun = new THREE.DirectionalLight(0xffe3c4, 1.6);
+    scene.add(new THREE.HemisphereLight(0xf3f1ec, 0x0f1a2b, 1.1));
+    const sun = new THREE.DirectionalLight(0xfff0d6, 1.6);
     sun.position.set(-8, 14, 6);
     sun.castShadow = !lowPower;
     sun.shadow.mapSize.set(2048, 2048);
