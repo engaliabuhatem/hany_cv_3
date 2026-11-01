@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Hani Al Sahooly — Project Manager &amp; Senior Architect | HS Group</title>
     <meta name="description" content="Eng. Hani Al Sahooly — Project Manager and Senior Architect at HS Group, Abu Dhabi. 20+ years leading design and construction-supervision teams for hospitals, healthcare facilities, master plans and housing programmes across the UAE, Yemen, Somaliland, Jordan, Djibouti and the Comoros.">
     <meta name="author" content="Hani Al Sahooly">
-    <meta name="theme-color" content="#F2F0EB">
-
+    <meta name="theme-color" content="#0B0D10">
     <meta property="og:type" content="profile">
     <meta property="og:site_name" content="Hani Al Sahooly">
     <meta property="og:title" content="Hani Al Sahooly — Project Manager &amp; Senior Architect | HS Group">
@@ -18,9 +17,26 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
-    <link href="css/site.css?v=4" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="css/site.css?v=5" rel="stylesheet">
     <link rel="icon" href="images/favicon.png?v=2">
+
+    <script>
+        /* Decide motion mode before first paint */
+        (function () {
+            var d = document.documentElement, pref = null;
+            try { pref = localStorage.getItem("motion"); } catch (e) {}
+            var reduce = pref === "off" || (pref === null && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+            d.classList.remove("no-js");
+            d.classList.add(reduce ? "motion-off" : "motion-on");
+            var seen = false;
+            try { seen = sessionStorage.getItem("intro") === "1"; } catch (e) {}
+            if (!reduce && !seen) d.classList.add("is-loading");
+        })();
+    </script>
+    <script type="importmap">
+        { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js" } }
+    </script>
 
     <script type="application/ld+json">
     {
@@ -40,314 +56,335 @@
 <body>
     <a class="skip" href="#main">Skip to content</a>
 
-    <header class="top">
-        <div class="grid top__inner">
-            <a class="brand" href="#main" aria-label="Hani Al Sahooly, home">
-                <img src="images/hs-logo-dark.svg" alt="" width="26" height="26">
-                <span>Hani Al Sahooly</span>
-            </a>
-            <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
-            <nav class="menu" id="menu" aria-label="Main">
-                <a href="#profile">Profile</a>
-                <a href="#experience">Experience</a>
-                <a href="#projects">Projects</a>
-                <a href="#countries">Countries</a>
-                <a href="#education">Education</a>
-                <a href="#contact">Contact</a>
-            </nav>
+    <!-- Intro: the HS mark is drawn, then the curtain lifts -->
+    <div class="loader" aria-hidden="true">
+        <svg class="loader__mark" viewBox="-4 -4 410 409"><path pathLength="1" d="M0 0L59 0L59 232L288 232L288 401L287 401L287 400L230 400L230 372L257 372L257 371L258 371L258 262L257 262L257 261L60 261L60 262L59 262L59 400L48 400L48 401L34 401L34 400L0 400L0 372L27 372L27 371L29 371L29 30L28 30L28 29L1 29L1 28L0 28Z"/><path pathLength="1" d="M114 0L173 0L173 28L172 28L172 29L144 29L144 160L145 160L145 161L342 161L342 160L343 160L343 159L342 159L342 156L343 156L343 155L342 155L342 110L343 110L343 8L342 8L342 6L343 6L343 3L342 3L342 1L343 1L343 0L402 0L402 28L401 28L401 29L373 29L373 371L374 371L374 372L402 372L402 400L401 400L401 401L400 401L400 400L397 400L397 401L396 401L396 400L343 400L343 395L342 395L342 357L343 357L343 351L342 351L342 328L343 328L343 237L342 237L342 189L341 189L341 190L340 190L340 189L119 189L119 190L118 190L118 189L114 189Z"/><path pathLength="1" d="M227 0L288 0L288 116L257 116L257 29L227 29Z"/><path pathLength="1" d="M114 305L146 305L146 371L175 371L175 400L114 400Z"/></svg>
+        <span class="loader__count">0</span>
+    </div>
+
+    <div class="cursor" aria-hidden="true"><span class="cursor__dot"></span><span class="cursor__ring"></span></div>
+
+    <header class="nav">
+        <a class="nav__brand" href="#top" data-cursor>
+            <img src="images/hs-logo.svg" alt="" width="24" height="24">
+            <span>Hani Al Sahooly</span>
+        </a>
+        <nav class="nav__links" id="menu" aria-label="Main">
+            <a href="#profile">Profile</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#countries">Countries</a>
+            <a href="#credentials">Credentials</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="nav__tools">
+            <button class="motion-toggle" type="button" aria-pressed="false" data-cursor>
+                <span class="motion-toggle__dot" aria-hidden="true"></span><span class="motion-toggle__label">Motion on</span>
+            </button>
+            <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" data-cursor><span class="sr-only">Open menu</span><i></i><i></i></button>
         </div>
     </header>
 
     <main id="main">
 
-        <!-- Intro -->
-        <section class="intro grid" aria-labelledby="name">
-            <div class="intro__text">
-                <p class="intro__kicker">Eng.</p>
-                <h1 id="name" class="intro__name">Hani<br>Al&nbsp;Sahooly</h1>
-                <p class="intro__role">Project Manager / Senior Architect<br>HS Group, Abu Dhabi</p>
-                <p class="intro__lead">More than 20 years leading design and construction-supervision teams for hospitals, healthcare facilities, master plans and housing programmes across the UAE, Yemen, Somaliland, Jordan, Djibouti and the Comoros.</p>
-            </div>
-            <figure class="intro__photo">
-                <picture>
-                    <source srcset="images/hani-al-sahooly.webp" type="image/webp">
-                    <img src="images/hani-al-sahooly.jpg" alt="Eng. Hani Al Sahooly" width="800" height="917" fetchpriority="high">
-                </picture>
-            </figure>
-            <dl class="figures">
-                <div><dt>Years of practice</dt><dd>20+</dd></div>
-                <div><dt>Countries</dt><dd>7</dd></div>
-                <div><dt>Flagship projects</dt><dd>11</dd></div>
-                <div><dt>Housing units designed</dt><dd>2,600+</dd></div>
-            </dl>
-        </section>
+        <!-- ============ HERO: 3D campus, drawing to building ============ -->
+        <section class="hero" id="top" aria-label="Introduction">
+            <div class="hero__sticky">
+                <div class="hero__canvas" aria-hidden="true">
+                    <svg class="hero__fallback" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-width="1"><path d="M120 300l180-90 260 130-180 90z"/><path d="M300 210v-90l260 130v90M120 300v-60l180-90M560 250l120-60v90l-120 60"/><path d="M380 160l60-30 120 60-60 30z"/></g></svg>
+                </div>
+                <div class="hero__vignette" aria-hidden="true"></div>
 
-        <!-- 01 Profile -->
-        <section class="sec grid" id="profile" aria-labelledby="h-profile">
-            <h2 class="sec__title" id="h-profile"><span>01</span>Profile</h2>
-            <div class="sec__body">
-                <div class="prose">
-                    <p class="prose__big">Eng. Hani Al Sahooly has spent more than two decades as Projects Director, Project Manager and Senior Architect, leading the design and construction-supervision teams behind many hospitals, healthcare and medical facilities.</p>
-                    <p>He works across architecture, urban planning, landscape design and project management: design, design review and redesign through to supervision of works and renovation. His remit also covers landscaping, administration, bills of quantities, contract documents, specifications and cost estimation.</p>
-                    <p>As project manager he is responsible for planning, coordination and follow-up of design implementation, programming and scheduling, work distribution, quality control, tender preparation and agreements, and financial and cost control. He has been with HS Group for 20 years.</p>
+                <div class="hero__meta" aria-hidden="true">
+                    <span>N 24°27′ — E 54°22′</span>
+                    <span>Abu Dhabi, UAE</span>
                 </div>
 
-                <h3 class="sub">Areas of expertise</h3>
-                <ol class="expertise">
-                    <li>Healthcare and hospital design</li>
-                    <li>Design review and construction supervision</li>
-                    <li>Urban planning and master plans</li>
-                    <li>Project and programme management</li>
-                    <li>Tendering, BOQs, contracts and cost control</li>
-                    <li>Quality control (QA/QC)</li>
-                    <li>Landscape design</li>
-                    <li>Feasibility and technical studies</li>
+                <ol class="stages" aria-label="How a project is delivered">
+                    <li class="stage is-active"><span>01</span>Drawing</li>
+                    <li class="stage"><span>02</span>Design review</li>
+                    <li class="stage"><span>03</span>Construction supervision</li>
+                    <li class="stage"><span>04</span>Delivery</li>
                 </ol>
-            </div>
-        </section>
 
-        <!-- 02 Experience -->
-        <section class="sec grid" id="experience" aria-labelledby="h-exp">
-            <h2 class="sec__title" id="h-exp"><span>02</span>Experience</h2>
-            <div class="sec__body">
-                <ol class="rows">
-                    <li class="row">
-                        <span class="row__date">01/2018 – Present</span>
-                        <div class="row__main"><h3>Project Manager / Senior Architect</h3><p>HS Group, Abu Dhabi</p></div>
-                    </li>
-                    <li class="row">
-                        <span class="row__date">07/2017 – Present</span>
-                        <div class="row__main"><h3>Project Manager</h3><p>HS Group, Yemen (Socotra)</p></div>
-                    </li>
-                    <li class="row">
-                        <span class="row__date">2015 – 2016</span>
-                        <div class="row__main"><h3>Project Director / Head of QACs / Senior Urban Planner</h3><p>HS Group, Jordan</p></div>
-                    </li>
-                    <li class="row">
-                        <span class="row__date">2012 – 2014</span>
-                        <div class="row__main"><h3>Project Director / QC</h3><p>HS Group</p></div>
-                    </li>
-                    <li class="row">
-                        <span class="row__date">01/2011 – Present</span>
-                        <div class="row__main">
-                            <h3>Projects' Manager / Senior Architect</h3>
-                            <p>HS International, UAE — UAE, Somalia, Ethiopia, Comoros, Yemen</p>
-                            <p class="row__note">Project manager and quality control for UAE and Yemen projects. Responsible for planning administration, human resources, project management, marketing and public relations, and financial and administrative management.</p>
-                        </div>
-                    </li>
-                    <li class="row">
-                        <span class="row__date">2011 – 2017</span>
-                        <div class="row__main">
-                            <h3>Projects Director / Senior Architect (Planner)</h3>
-                            <p>HS Group, Somalia</p>
-                            <p class="row__note">Detailed design, design review, construction supervision, and technical, social and environmental studies. Coordinated client, consultant and contractor interfaces: payments, contract correspondence, tender documents, variation orders and claims prevention.</p>
-                        </div>
-                    </li>
-                    <li class="row">
-                        <span class="row__date">2010 – 2017</span>
-                        <div class="row__main"><h3>Project Manager / Senior Architect</h3><p>HS Group, Yemen</p></div>
-                    </li>
-                    <li class="row">
-                        <span class="row__date">2009 – 2012</span>
-                        <div class="row__main"><h3>Project Director / Architect</h3><p>HS Group, Yemen</p></div>
-                    </li>
-                    <li class="row">
-                        <span class="row__date">07/2004 – 2005</span>
-                        <div class="row__main"><h3>Architect / Planning Expert</h3><p>HS Group, Yemen</p></div>
-                    </li>
-                </ol>
-            </div>
-        </section>
-
-        <!-- 03 Projects -->
-        <section class="sec grid" id="projects" aria-labelledby="h-proj">
-            <h2 class="sec__title" id="h-proj"><span>03</span>Projects</h2>
-            <div class="sec__body">
-                <div class="filter" role="group" aria-label="Filter projects">
-                    <button type="button" data-filter="all" aria-pressed="true">All <sup>11</sup></button>
-                    <button type="button" data-filter="healthcare" aria-pressed="false">Healthcare <sup>5</sup></button>
-                    <button type="button" data-filter="planning" aria-pressed="false">Master planning <sup>3</sup></button>
-                    <button type="button" data-filter="housing" aria-pressed="false">Housing <sup>2</sup></button>
-                    <button type="button" data-filter="infrastructure" aria-pressed="false">Infrastructure <sup>1</sup></button>
+                <div class="hero__content">
+                    <p class="hero__role"><span class="mask"><span>Eng. — Project Manager / Senior Architect, HS Group</span></span></p>
+                    <h1 class="hero__name" aria-label="Hani Al Sahooly"><span class="split" aria-hidden="true">Hani Al</span><span class="split" aria-hidden="true">Sahooly</span></h1>
+                    <div class="hero__bottom">
+                        <p class="hero__lead">More than 20 years leading design and construction-supervision teams for hospitals, healthcare facilities, master plans and housing programmes across the UAE, Yemen, Somaliland, Jordan, Djibouti and the Comoros.</p>
+                        <a class="hero__cue" href="#profile" data-cursor><span>Scroll</span><i aria-hidden="true"></i></a>
+                    </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="index">
-                    <div class="index__head" aria-hidden="true"><span>No.</span><span>Project</span><span>Location</span><span>Period</span></div>
+        <!-- ============ NUMBERS ============ -->
+        <section class="numbers" aria-label="Career in numbers">
+            <div class="numbers__grid">
+                <div class="num"><span class="num__v"><span data-count="20">20</span>+</span><span class="num__k">Years leading design &amp; supervision</span></div>
+                <div class="num"><span class="num__v" data-count="7">7</span><span class="num__k">Countries of practice</span></div>
+                <div class="num"><span class="num__v" data-count="11">11</span><span class="num__k">Flagship projects</span></div>
+                <div class="num"><span class="num__v"><span data-count="2600">2,600</span>+</span><span class="num__k">Housing units designed</span></div>
+                <div class="num"><span class="num__v"><span data-count="90855">90,855</span><small>m²</small></span><span class="num__k">Largest hospital campus</span></div>
+            </div>
+        </section>
 
-                    <details class="proj" data-cat="healthcare" open>
-                        <summary><span class="proj__no">01</span><span class="proj__name">Sana'a University Educational Hospital</span><span class="proj__loc">Sana'a, Yemen</span><span class="proj__date">11/2014 – Present</span></summary>
-                        <div class="proj__body">
-                            <img src="images/projects/hospital-campus.svg" alt="" loading="lazy" width="640" height="400">
-                            <div>
-                                <p>Design review and construction supervision of a 90,855 m² teaching-hospital campus: civil, finishing, electrical, plumbing and mechanical works. Buildings include the Research Center, Housing &amp; Dormitory, Support Facilities, Emergency, Nursing Tower, Mosque and Outpatient Department.</p>
-                                <dl class="facts"><div><dt>Role</dt><dd>Senior Architect</dd></div><div><dt>Area</dt><dd>90,855 m²</dd></div><div><dt>Type</dt><dd>Healthcare</dd></div></dl>
-                            </div>
-                        </div>
-                    </details>
-
-                    <details class="proj" data-cat="healthcare">
-                        <summary><span class="proj__no">02</span><span class="proj__name">Two Hospitals in Burao and Berbera</span><span class="proj__loc">Somaliland</span><span class="proj__date">01/2018 – Present</span></summary>
-                        <div class="proj__body">
-                            <img src="images/projects/hospital-low.svg" alt="" loading="lazy" width="640" height="400">
-                            <div>
-                                <p>Design review and construction supervision of two single-storey, 50-bed hospitals — one in Burao, one in Berbera.</p>
-                                <dl class="facts"><div><dt>Role</dt><dd>Project Manager / Senior Architect</dd></div><div><dt>Funded by</dt><dd>UAE</dd></div><div><dt>Type</dt><dd>Healthcare</dd></div></dl>
-                            </div>
-                        </div>
-                    </details>
-
-                    <details class="proj" data-cat="planning">
-                        <summary><span class="proj__no">03</span><span class="proj__name">Socotra Development Master Plan</span><span class="proj__loc">Socotra, Yemen</span><span class="proj__date">07/2017 – Present</span></summary>
-                        <div class="proj__body">
-                            <img src="images/projects/island-plan.svg" alt="" loading="lazy" width="640" height="400">
-                            <div>
-                                <p>Master plan for Socotra, the largest island of the archipelago in the Arabian Sea (3,796 km²; the archipelago is about 250 km long). Engineering feasibility studies and coordination with international and private funding agencies, aimed at controlling growth, attracting investment, improving living conditions and preserving the environment and biodiversity.</p>
-                                <dl class="facts"><div><dt>Role</dt><dd>Project Manager</dd></div><div><dt>Area</dt><dd>3,796 km²</dd></div><div><dt>Type</dt><dd>Master planning</dd></div></dl>
-                            </div>
-                        </div>
-                    </details>
-
-                    <details class="proj" data-cat="planning">
-                        <summary><span class="proj__no">04</span><span class="proj__name">Wadi Araba Integrated Master Plan</span><span class="proj__loc">Jordan</span><span class="proj__date">2015 – 2016</span></summary>
-                        <div class="proj__body">
-                            <img src="images/projects/valley-plan.svg" alt="" loading="lazy" width="640" height="400">
-                            <div>
-                                <p>Integrated land-use master plan for a sensitive border area of about 2,200 km², for the Jordan Valley Authority. Defined 30-year infrastructure requirements aligned with investment, residential and tourism growth, with an investment-potential assessment, marketing strategy and implementation programmes.</p>
-                                <dl class="facts"><div><dt>Role</dt><dd>Project Director / Head of QACs / Senior Urban Planner</dd></div><div><dt>Client</dt><dd>Jordan Valley Authority</dd></div><div><dt>Area</dt><dd>~2,200 km²</dd></div></dl>
-                            </div>
-                        </div>
-                    </details>
-
-                    <details class="proj" data-cat="infrastructure">
-                        <summary><span class="proj__no">05</span><span class="proj__name">Slaughterhouse — Studies, Detailed Design and Construction</span><span class="proj__loc">Berbera, Somaliland</span><span class="proj__date">2011 – 2017</span></summary>
-                        <div class="proj__body">
-                            <img src="images/projects/infrastructure.svg" alt="" loading="lazy" width="640" height="400">
-                            <div>
-                                <p>Technical studies, detailed design and construction of the main slaughterhouse buildings, water storage tanks, water supply network and wastewater collection, refrigeration, and waste collection and treatment facilities.</p>
-                                <dl class="facts"><div><dt>Role</dt><dd>Projects Director</dd></div><div><dt>Type</dt><dd>Infrastructure</dd></div></dl>
-                            </div>
-                        </div>
-                    </details>
-
-                    <details class="proj" data-cat="healthcare">
-                        <summary><span class="proj__no">06</span><span class="proj__name">Expansion of Sheikh Khalifa Bin Zayed Al Nahyan Hospital</span><span class="proj__loc">Socotra, Yemen</span><span class="proj__date">12/2014 – 12/2016</span></summary>
-                        <div class="proj__body">
-                            <img src="images/projects/hospital-low.svg" alt="" loading="lazy" width="640" height="400">
-                            <div>
-                                <p>Expansion, reconstruction and rehabilitation, including three new buildings for external clinics, kitchen and medical facilities. Design review and construction supervision.</p>
-                                <dl class="facts"><div><dt>Role</dt><dd>Project Manager</dd></div><div><dt>Type</dt><dd>Healthcare</dd></div></dl>
-                            </div>
-                        </div>
-                    </details>
-
-                    <details class="proj" data-cat="healthcare">
-                        <summary><span class="proj__no">07</span><span class="proj__name">Al Amal Cancer Hospital</span><span class="proj__loc">Little Aden, Yemen</span><span class="proj__date">02/2015 – 11/2015</span></summary>
-                        <div class="proj__body">
-                            <img src="images/projects/hospital-tower.svg" alt="" loading="lazy" width="640" height="400">
-                            <div>
-                                <p>Design review and construction supervision on a site of about 50,000 m².</p>
-                                <dl class="facts"><div><dt>Role</dt><dd>Project Manager</dd></div><div><dt>Construction cost</dt><dd>USD 13M</dd></div><div><dt>Site</dt><dd>~50,000 m²</dd></div></dl>
-                            </div>
-                        </div>
-                    </details>
-
-                    <details class="proj" data-cat="healthcare">
-                        <summary><span class="proj__no">08</span><span class="proj__name">Al Gomhouria Hospital — New Emergency Hospital</span><span class="proj__loc">Khormaksar, Aden, Yemen</span><span class="proj__date">—</span></summary>
-                        <div class="proj__body">
-                            <img src="images/projects/hospital-tower.svg" alt="" loading="lazy" width="640" height="400">
-                            <div>
-                                <p>Design of a 150-bed emergency hospital of about 9,000 m² built-up area: imaging, laboratories, rehabilitation, surgery, endoscopy, large outpatient and ambulatory care, inpatient and ICU; electro-mechanical plant, kitchen and laundry, CSSD, solid-waste treatment, helipad, parking, mosque, nurses' housing and administration.</p>
-                                <dl class="facts"><div><dt>Beds</dt><dd>150</dd></div><div><dt>Built-up area</dt><dd>~9,000 m²</dd></div><div><dt>Type</dt><dd>Healthcare</dd></div></dl>
-                            </div>
-                        </div>
-                    </details>
-
-                    <details class="proj" data-cat="housing">
-                        <summary><span class="proj__no">09</span><span class="proj__name">1,600 Housing Units</span><span class="proj__loc">Balbala, Djibouti</span><span class="proj__date">2012 – 2014</span></summary>
-                        <div class="proj__body">
-                            <img src="images/projects/housing.svg" alt="" loading="lazy" width="640" height="400">
-                            <div>
-                                <p>Individual and collective social housing. Quality control of the feasibility, design, planning and preliminary architectural and urban-planning reports.</p>
-                                <dl class="facts"><div><dt>Role</dt><dd>Project Director / QC</dd></div><div><dt>Funded by</dt><dd>WATANIA Real Estate, Kuwait</dd></div><div><dt>Units</dt><dd>1,600</dd></div></dl>
-                            </div>
-                        </div>
-                    </details>
-
-                    <details class="proj" data-cat="housing">
-                        <summary><span class="proj__no">10</span><span class="proj__name">Emirates Red Crescent Housing Programme</span><span class="proj__loc">Hadramout, Yemen</span><span class="proj__date">2009 – 2012</span></summary>
-                        <div class="proj__body">
-                            <img src="images/projects/housing-vernacular.svg" alt="" loading="lazy" width="640" height="400">
-                            <div>
-                                <p>800 mud-brick housing units in Tarim (USD 20M) and 200 stone and concrete units in Mukalla (USD 6M). Feasibility, design and preliminary architectural services.</p>
-                                <dl class="facts"><div><dt>Role</dt><dd>Project Director / Architect</dd></div><div><dt>Units</dt><dd>1,000</dd></div><div><dt>Value</dt><dd>USD 26M</dd></div></dl>
-                            </div>
-                        </div>
-                    </details>
-
-                    <details class="proj" data-cat="planning">
-                        <summary><span class="proj__no">11</span><span class="proj__name">Revising and Updating the Master Plan of Aden City</span><span class="proj__loc">Aden, Yemen</span><span class="proj__date">07/2004 – 2005</span></summary>
-                        <div class="proj__body">
-                            <img src="images/projects/city-plan.svg" alt="" loading="lazy" width="640" height="400">
-                            <div>
-                                <p>In association with Halcrow (UK). Building-stock and building-height analysis, rehabilitation zones, urban fabric, and heritage landmarks identified for preservation.</p>
-                                <dl class="facts"><div><dt>Role</dt><dd>Architect / Planning Expert</dd></div><div><dt>Partner</dt><dd>Halcrow (UK)</dd></div></dl>
-                            </div>
-                        </div>
-                    </details>
+        <!-- ============ PROFILE ============ -->
+        <section class="sec profile" id="profile" aria-labelledby="h-profile">
+            <header class="sec__head">
+                <span class="sec__no">01</span>
+                <h2 id="h-profile" class="sec__title">Profile</h2>
+            </header>
+            <p class="profile__statement scrub-words">Eng. Hani Al Sahooly has spent more than two decades as Projects Director, Project Manager and Senior Architect — leading the design and construction-supervision teams behind hospitals, healthcare and medical facilities.</p>
+            <div class="profile__cols">
+                <figure class="profile__photo">
+                    <div class="profile__frame tilt" data-cursor>
+                        <img src="images/hani-cutout.webp" alt="Eng. Hani Al Sahooly" width="754" height="935" loading="lazy">
+                    </div>
+                    <figcaption>Abu Dhabi · 20 years with HS Group</figcaption>
+                </figure>
+                <div class="profile__text">
+                    <p class="reveal">His work spans architecture, urban planning, landscape design and project management: design, design review and redesign through to supervision of works and renovation. It also covers landscaping, administration, bills of quantities, contract documents, specifications and cost estimation.</p>
+                    <p class="reveal">As project manager he is responsible for planning, coordination and follow-up of design implementation, programming and scheduling, work distribution, quality control, tender preparation and agreements, and financial and cost control.</p>
                 </div>
-                <p class="small">Drawings are illustrative diagrams, not records of the built projects.</p>
             </div>
+
+            <h3 class="sub reveal">Expertise</h3>
+            <ul class="expertise">
+                <li class="xp" data-cursor><span class="xp__no">01</span><span class="xp__name">Healthcare &amp; hospital design</span><span class="xp__desc">Emergency, oncology and teaching hospitals from 50 to 150 beds</span></li>
+                <li class="xp" data-cursor><span class="xp__no">02</span><span class="xp__name">Design review &amp; construction supervision</span><span class="xp__desc">Civil, finishing, electrical, plumbing and mechanical works</span></li>
+                <li class="xp" data-cursor><span class="xp__no">03</span><span class="xp__name">Urban planning &amp; master plans</span><span class="xp__desc">City, island and regional land-use plans</span></li>
+                <li class="xp" data-cursor><span class="xp__no">04</span><span class="xp__name">Project &amp; programme management</span><span class="xp__desc">Planning, programming, scheduling and work distribution</span></li>
+                <li class="xp" data-cursor><span class="xp__no">05</span><span class="xp__name">Tendering, BOQs, contracts &amp; cost control</span><span class="xp__desc">Tender documents, variation orders, claims prevention</span></li>
+                <li class="xp" data-cursor><span class="xp__no">06</span><span class="xp__name">Quality control (QA/QC)</span><span class="xp__desc">Feasibility, design and planning reports</span></li>
+                <li class="xp" data-cursor><span class="xp__no">07</span><span class="xp__name">Landscape design</span><span class="xp__desc">Integrated with architecture and urban planning</span></li>
+                <li class="xp" data-cursor><span class="xp__no">08</span><span class="xp__name">Feasibility &amp; technical studies</span><span class="xp__desc">Engineering, social, environmental and investment studies</span></li>
+            </ul>
         </section>
 
-        <!-- 04 Countries -->
-        <section class="sec grid" id="countries" aria-labelledby="h-countries">
-            <h2 class="sec__title" id="h-countries"><span>04</span>Countries</h2>
-            <div class="sec__body">
-                <div class="gantt">
-                    <div class="gantt__axis" aria-hidden="true"><span></span><span class="gantt__scale"><i style="--y:1990">1990</i><i style="--y:2000">2000</i><i style="--y:2010">2010</i><i style="--y:2020">2020</i></span><span></span></div>
-                    <ul>
-                        <li><span>Yemen</span><span class="gantt__track"><b style="--a:1990;--b:2015"></b></span><span>1990 – 2015</span></li>
-                        <li><span>United Arab Emirates</span><span class="gantt__track"><b class="open" style="--a:2005;--b:2026"></b></span><span>2005 – Present</span></li>
-                        <li><span>Jordan</span><span class="gantt__track"><b style="--a:2011;--b:2017"></b></span><span>2011 – 2017</span></li>
-                        <li><span>Canada</span><span class="gantt__track"><b style="--a:2012;--b:2016"></b></span><span>2012 – 2016</span></li>
-                        <li><span>Somalia / Somaliland</span><span class="gantt__track"><b class="open" style="--a:2014;--b:2026"></b></span><span>2014 – Present</span></li>
-                        <li><span>Ethiopia</span><span class="gantt__track"><b style="--a:2014;--b:2016"></b></span><span>2014 – 2016</span></li>
-                        <li><span>Comoros</span><span class="gantt__track"><b class="open" style="--a:2016;--b:2026"></b></span><span>2016 – Present</span></li>
-                    </ul>
+        <!-- ============ EXPERIENCE (horizontal on desktop) ============ -->
+        <section class="experience" id="experience" aria-labelledby="h-exp">
+            <div class="experience__pin">
+                <header class="sec__head experience__head">
+                    <span class="sec__no">02</span>
+                    <h2 id="h-exp" class="sec__title">Experience</h2>
+                    <span class="experience__hint" aria-hidden="true">2004 → Present</span>
+                </header>
+                <div class="experience__track">
+                    <ol class="tl">
+                        <li class="tl__item"><span class="tl__date">07/2004 – 2005</span><h3>Architect / Planning Expert</h3><p class="tl__org">HS Group · Yemen</p></li>
+                        <li class="tl__item"><span class="tl__date">2009 – 2012</span><h3>Project Director / Architect</h3><p class="tl__org">HS Group · Yemen</p></li>
+                        <li class="tl__item"><span class="tl__date">2010 – 2017</span><h3>Project Manager / Senior Architect</h3><p class="tl__org">HS Group · Yemen</p></li>
+                        <li class="tl__item tl__item--wide"><span class="tl__date">2011 – 2017</span><h3>Projects Director / Senior Architect (Planner)</h3><p class="tl__org">HS Group · Somalia</p><p>Detailed design, design review, construction supervision, and technical, social and environmental studies. Coordinated client, consultant and contractor interfaces: payments, contract correspondence, tender documents, variation orders and claims prevention.</p></li>
+                        <li class="tl__item tl__item--wide"><span class="tl__date">01/2011 – Present</span><h3>Projects' Manager / Senior Architect</h3><p class="tl__org">HS International · UAE — UAE, Somalia, Ethiopia, Comoros, Yemen</p><p>Project manager and quality control for UAE and Yemen projects; responsible for planning administration, human resources, project management, marketing and public relations, and financial and administrative management.</p></li>
+                        <li class="tl__item"><span class="tl__date">2012 – 2014</span><h3>Project Director / QC</h3><p class="tl__org">HS Group</p></li>
+                        <li class="tl__item"><span class="tl__date">2015 – 2016</span><h3>Project Director / Head of QACs / Senior Urban Planner</h3><p class="tl__org">HS Group · Jordan</p></li>
+                        <li class="tl__item"><span class="tl__date">07/2017 – Present</span><h3>Project Manager</h3><p class="tl__org">HS Group · Yemen (Socotra)</p></li>
+                        <li class="tl__item tl__item--now"><span class="tl__date">01/2018 – Present</span><h3>Project Manager / Senior Architect</h3><p class="tl__org">HS Group · Abu Dhabi</p></li>
+                    </ol>
                 </div>
-                <p class="small">Djibouti also appears through the Balbala housing project (2012 – 2014).</p>
+                <div class="experience__bar" aria-hidden="true"><span></span></div>
             </div>
         </section>
 
-        <!-- 05 Education -->
-        <section class="sec grid" id="education" aria-labelledby="h-edu">
-            <h2 class="sec__title" id="h-edu"><span>05</span>Education</h2>
-            <div class="sec__body">
-                <dl class="list">
-                    <div><dt>Degree</dt><dd>B.Sc. in Architectural Engineering<br><span>Applied Science University, Amman, Jordan — 1997</span></dd></div>
-                    <div><dt>Membership</dt><dd>Yemeni Engineers Syndicate</dd></div>
-                    <div><dt>Languages</dt><dd>Arabic — native<br>English — fluent in reading, speaking and writing</dd></div>
-                    <div><dt>Other skills</dt><dd>Excellent background in computer software<br>Very good communication skills</dd></div>
-                    <div><dt>Nationality</dt><dd>Yemeni, based in Abu Dhabi</dd></div>
-                </dl>
+        <!-- ============ PROJECTS ============ -->
+        <section class="sec projects" id="projects" aria-labelledby="h-proj">
+            <header class="sec__head">
+                <span class="sec__no">03</span>
+                <h2 id="h-proj" class="sec__title">Projects</h2>
+            </header>
+            <div class="filter" role="group" aria-label="Filter projects by type">
+                <button type="button" data-filter="all" aria-pressed="true" data-cursor>All<sup>11</sup></button>
+                <button type="button" data-filter="healthcare" aria-pressed="false" data-cursor>Healthcare<sup>5</sup></button>
+                <button type="button" data-filter="planning" aria-pressed="false" data-cursor>Master planning<sup>3</sup></button>
+                <button type="button" data-filter="housing" aria-pressed="false" data-cursor>Housing<sup>2</sup></button>
+                <button type="button" data-filter="infrastructure" aria-pressed="false" data-cursor>Infrastructure<sup>1</sup></button>
+            </div>
+
+            <ul class="plist">
+                <li class="p" data-cat="healthcare" data-id="p1"><button type="button" class="p__btn" data-cursor="view"><span class="p__no">01</span><span class="p__name">Sana'a University Educational Hospital</span><span class="p__loc">Sana'a, Yemen</span><span class="p__date">2014 – Now</span></button></li>
+                <li class="p" data-cat="healthcare" data-id="p2"><button type="button" class="p__btn" data-cursor="view"><span class="p__no">02</span><span class="p__name">Two Hospitals in Burao &amp; Berbera</span><span class="p__loc">Somaliland</span><span class="p__date">2018 – Now</span></button></li>
+                <li class="p" data-cat="planning" data-id="p3"><button type="button" class="p__btn" data-cursor="view"><span class="p__no">03</span><span class="p__name">Socotra Development Master Plan</span><span class="p__loc">Socotra, Yemen</span><span class="p__date">2017 – Now</span></button></li>
+                <li class="p" data-cat="planning" data-id="p4"><button type="button" class="p__btn" data-cursor="view"><span class="p__no">04</span><span class="p__name">Wadi Araba Integrated Master Plan</span><span class="p__loc">Jordan</span><span class="p__date">2015 – 2016</span></button></li>
+                <li class="p" data-cat="infrastructure" data-id="p5"><button type="button" class="p__btn" data-cursor="view"><span class="p__no">05</span><span class="p__name">Berbera Slaughterhouse</span><span class="p__loc">Berbera, Somaliland</span><span class="p__date">2011 – 2017</span></button></li>
+                <li class="p" data-cat="healthcare" data-id="p6"><button type="button" class="p__btn" data-cursor="view"><span class="p__no">06</span><span class="p__name">Sheikh Khalifa Hospital Expansion</span><span class="p__loc">Socotra, Yemen</span><span class="p__date">2014 – 2016</span></button></li>
+                <li class="p" data-cat="healthcare" data-id="p7"><button type="button" class="p__btn" data-cursor="view"><span class="p__no">07</span><span class="p__name">Al Amal Cancer Hospital</span><span class="p__loc">Little Aden, Yemen</span><span class="p__date">2015</span></button></li>
+                <li class="p" data-cat="healthcare" data-id="p8"><button type="button" class="p__btn" data-cursor="view"><span class="p__no">08</span><span class="p__name">Al Gomhouria Emergency Hospital</span><span class="p__loc">Aden, Yemen</span><span class="p__date">Design</span></button></li>
+                <li class="p" data-cat="housing" data-id="p9"><button type="button" class="p__btn" data-cursor="view"><span class="p__no">09</span><span class="p__name">1,600 Housing Units</span><span class="p__loc">Balbala, Djibouti</span><span class="p__date">2012 – 2014</span></button></li>
+                <li class="p" data-cat="housing" data-id="p10"><button type="button" class="p__btn" data-cursor="view"><span class="p__no">10</span><span class="p__name">Emirates Red Crescent Housing</span><span class="p__loc">Hadramout, Yemen</span><span class="p__date">2009 – 2012</span></button></li>
+                <li class="p" data-cat="planning" data-id="p11"><button type="button" class="p__btn" data-cursor="view"><span class="p__no">11</span><span class="p__name">Aden City Master Plan Update</span><span class="p__loc">Aden, Yemen</span><span class="p__date">2004 – 2005</span></button></li>
+            </ul>
+            <p class="note">Drawings are illustrative diagrams, not records of the built projects.</p>
+
+            <div class="peek" aria-hidden="true"><img alt="" width="640" height="400"></div>
+        </section>
+
+        <!-- Project details (rendered into the dialog by main.js) -->
+        <template id="project-data">
+            <article data-id="p1" data-img="hospital-campus">
+                <h3>Sana'a University Educational Hospital</h3>
+                <p class="d__meta">Sana'a, Yemen · 11/2014 – Present · Healthcare</p>
+                <p>Design review and construction supervision of a 90,855 m² teaching-hospital campus: civil, finishing, electrical, plumbing and mechanical works. Buildings include the Research Center, Housing &amp; Dormitory, Support Facilities, Emergency, Nursing Tower, Mosque and Outpatient Department.</p>
+                <dl><div><dt>Role</dt><dd>Senior Architect</dd></div><div><dt>Area</dt><dd>90,855 m²</dd></div><div><dt>Buildings</dt><dd>7</dd></div></dl>
+            </article>
+            <article data-id="p2" data-img="hospital-low">
+                <h3>Two Hospitals in Burao and Berbera</h3>
+                <p class="d__meta">Somaliland · 01/2018 – Present · Healthcare</p>
+                <p>Design review and construction supervision of two single-storey, 50-bed hospitals — one in Burao and one in Berbera.</p>
+                <dl><div><dt>Role</dt><dd>Project Manager / Senior Architect</dd></div><div><dt>Funded by</dt><dd>UAE</dd></div><div><dt>Beds</dt><dd>2 × 50</dd></div></dl>
+            </article>
+            <article data-id="p3" data-img="island-plan">
+                <h3>Socotra Development Master Plan</h3>
+                <p class="d__meta">Socotra, Yemen · 07/2017 – Present · Master planning</p>
+                <p>Master plan for Socotra, the largest island of the archipelago in the Arabian Sea (3,796 km²; the archipelago is about 250 km long). Engineering feasibility studies and coordination with international and private funding agencies, aimed at controlling growth, attracting investment, improving living conditions and preserving the environment and biodiversity.</p>
+                <dl><div><dt>Role</dt><dd>Project Manager</dd></div><div><dt>Island area</dt><dd>3,796 km²</dd></div></dl>
+            </article>
+            <article data-id="p4" data-img="valley-plan">
+                <h3>Wadi Araba Integrated Master Plan</h3>
+                <p class="d__meta">Jordan · 2015 – 2016 · Master planning</p>
+                <p>Integrated land-use master plan for a sensitive border area of about 2,200 km², for the Jordan Valley Authority: 30-year infrastructure requirements aligned with investment, residential and tourism growth, an investment-potential assessment, marketing strategy and implementation programmes.</p>
+                <dl><div><dt>Role</dt><dd>Project Director / Head of QACs / Senior Urban Planner</dd></div><div><dt>Client</dt><dd>Jordan Valley Authority</dd></div><div><dt>Area</dt><dd>~2,200 km²</dd></div></dl>
+            </article>
+            <article data-id="p5" data-img="infrastructure">
+                <h3>Slaughterhouse — Technical Studies, Detailed Design &amp; Construction</h3>
+                <p class="d__meta">Berbera, Somaliland · 2011 – 2017 · Infrastructure</p>
+                <p>Main slaughterhouse buildings, water storage tanks, water supply network and wastewater collection, refrigeration, and waste collection and treatment facilities.</p>
+                <dl><div><dt>Role</dt><dd>Projects Director</dd></div></dl>
+            </article>
+            <article data-id="p6" data-img="hospital-low">
+                <h3>Expansion of Sheikh Khalifa Bin Zayed Al Nahyan Hospital</h3>
+                <p class="d__meta">Socotra, Yemen · 12/2014 – 12/2016 · Healthcare</p>
+                <p>Expansion, reconstruction and rehabilitation, including three new buildings for external clinics, kitchen and medical facilities. Design review and construction supervision.</p>
+                <dl><div><dt>Role</dt><dd>Project Manager</dd></div><div><dt>New buildings</dt><dd>3</dd></div></dl>
+            </article>
+            <article data-id="p7" data-img="hospital-tower">
+                <h3>Al Amal Cancer Hospital</h3>
+                <p class="d__meta">Little Aden, Yemen · 02/2015 – 11/2015 · Healthcare</p>
+                <p>Design review and construction supervision on a site of about 50,000 m².</p>
+                <dl><div><dt>Role</dt><dd>Project Manager</dd></div><div><dt>Construction cost</dt><dd>USD 13M</dd></div><div><dt>Site</dt><dd>~50,000 m²</dd></div></dl>
+            </article>
+            <article data-id="p8" data-img="hospital-tower">
+                <h3>Al Gomhouria Hospital — New Emergency Hospital Design</h3>
+                <p class="d__meta">Khormaksar, Aden, Yemen · Healthcare</p>
+                <p>A 150-bed emergency hospital of about 9,000 m² built-up area: imaging, laboratories, rehabilitation, surgery, endoscopy, large outpatient and ambulatory care, inpatient and ICU; electro-mechanical plant, kitchen and laundry, CSSD, solid-waste treatment, helipad, parking, mosque, nurses' housing and administration.</p>
+                <dl><div><dt>Beds</dt><dd>150</dd></div><div><dt>Built-up area</dt><dd>~9,000 m²</dd></div></dl>
+            </article>
+            <article data-id="p9" data-img="housing">
+                <h3>1,600 Housing Units</h3>
+                <p class="d__meta">Balbala, Djibouti · 2012 – 2014 · Housing</p>
+                <p>Individual and collective social housing. Quality control of the feasibility, design, planning and preliminary architectural and urban-planning reports.</p>
+                <dl><div><dt>Role</dt><dd>Project Director / QC</dd></div><div><dt>Funded by</dt><dd>WATANIA Real Estate, Kuwait</dd></div><div><dt>Units</dt><dd>1,600</dd></div></dl>
+            </article>
+            <article data-id="p10" data-img="housing-vernacular">
+                <h3>Emirates Red Crescent Housing Programme</h3>
+                <p class="d__meta">Hadramout, Yemen · 2009 – 2012 · Housing</p>
+                <p>800 mud-brick housing units in Tarim (USD 20M) and 200 stone and concrete units in Mukalla (USD 6M). Feasibility, design and preliminary architectural services.</p>
+                <dl><div><dt>Role</dt><dd>Project Director / Architect</dd></div><div><dt>Units</dt><dd>1,000</dd></div><div><dt>Value</dt><dd>USD 26M</dd></div></dl>
+            </article>
+            <article data-id="p11" data-img="city-plan">
+                <h3>Revising &amp; Updating the Master Plan of Aden City</h3>
+                <p class="d__meta">Aden, Yemen · 07/2004 – 2005 · Master planning</p>
+                <p>In association with Halcrow (UK): building-stock and building-height analysis, rehabilitation zones, urban fabric, and heritage landmarks identified for preservation.</p>
+                <dl><div><dt>Role</dt><dd>Architect / Planning Expert</dd></div><div><dt>Partner</dt><dd>Halcrow (UK)</dd></div></dl>
+            </article>
+        </template>
+
+        <dialog class="detail" aria-labelledby="detail-title">
+            <div class="detail__inner">
+                <button class="detail__close" type="button" data-cursor>Close<span aria-hidden="true"> ✕</span></button>
+                <figure class="detail__fig"><img alt="" width="640" height="400"></figure>
+                <div class="detail__body"></div>
+                <div class="detail__nav">
+                    <button type="button" class="detail__prev" data-cursor>← Previous</button>
+                    <button type="button" class="detail__next" data-cursor>Next →</button>
+                </div>
+            </div>
+        </dialog>
+
+        <!-- ============ COUNTRIES: 3D globe ============ -->
+        <section class="sec countries" id="countries" aria-labelledby="h-countries">
+            <header class="sec__head">
+                <span class="sec__no">04</span>
+                <h2 id="h-countries" class="sec__title">Countries</h2>
+            </header>
+            <div class="countries__wrap">
+                <div class="globe" aria-hidden="true">
+                    <div class="globe__canvas"></div>
+                    <div class="globe__tip"></div>
+                </div>
+                <ul class="clist">
+                    <li><button type="button" data-country="ae" data-cursor><span class="clist__n">United Arab Emirates</span><span class="clist__y">2005 – Present</span><span class="clist__p">Base · HS Group, Abu Dhabi</span></button></li>
+                    <li><button type="button" data-country="ye" data-cursor><span class="clist__n">Yemen</span><span class="clist__y">1990 – 2015</span><span class="clist__p">Sana'a University Hospital · Socotra · Aden · Hadramout</span></button></li>
+                    <li><button type="button" data-country="so" data-cursor><span class="clist__n">Somalia / Somaliland</span><span class="clist__y">2014 – Present</span><span class="clist__p">Burao &amp; Berbera hospitals · Berbera slaughterhouse</span></button></li>
+                    <li><button type="button" data-country="jo" data-cursor><span class="clist__n">Jordan</span><span class="clist__y">2011 – 2017</span><span class="clist__p">Wadi Araba Integrated Master Plan</span></button></li>
+                    <li><button type="button" data-country="km" data-cursor><span class="clist__n">Comoros</span><span class="clist__y">2016 – Present</span><span class="clist__p">HS International projects</span></button></li>
+                    <li><button type="button" data-country="et" data-cursor><span class="clist__n">Ethiopia</span><span class="clist__y">2014 – 2016</span><span class="clist__p">HS International projects</span></button></li>
+                    <li><button type="button" data-country="ca" data-cursor><span class="clist__n">Canada</span><span class="clist__y">2012 – 2016</span><span class="clist__p">Country experience</span></button></li>
+                    <li><button type="button" data-country="dj" data-cursor><span class="clist__n">Djibouti</span><span class="clist__y">2012 – 2014</span><span class="clist__p">1,600 housing units, Balbala</span></button></li>
+                </ul>
             </div>
         </section>
 
-        <!-- 06 Contact -->
-        <section class="sec grid" id="contact" aria-labelledby="h-contact">
-            <h2 class="sec__title" id="h-contact"><span>06</span>Contact</h2>
-            <div class="sec__body">
-                <p class="contact">HS Group<br>Abu Dhabi, United Arab Emirates</p>
+        <!-- ============ CREDENTIALS ============ -->
+        <section class="sec creds" id="credentials" aria-labelledby="h-creds">
+            <header class="sec__head">
+                <span class="sec__no">05</span>
+                <h2 id="h-creds" class="sec__title">Credentials</h2>
+            </header>
+            <div class="creds__grid">
+                <article class="cred reveal">
+                    <span class="cred__k">Education</span>
+                    <h3>B.Sc. Architectural Engineering</h3>
+                    <p>Applied Science University<br>Amman, Jordan — 1997</p>
+                </article>
+                <article class="cred reveal">
+                    <span class="cred__k">Membership</span>
+                    <h3>Yemeni Engineers Syndicate</h3>
+                    <p>Member</p>
+                </article>
+                <article class="cred reveal">
+                    <span class="cred__k">Languages</span>
+                    <div class="lang"><span>Arabic</span><span class="lang__bar"><i style="--v:1"></i></span><span>Native</span></div>
+                    <div class="lang"><span>English</span><span class="lang__bar"><i style="--v:1"></i></span><span>5 / 5</span></div>
+                    <p class="cred__s">English: reading, speaking and writing.</p>
+                </article>
+                <article class="cred reveal">
+                    <span class="cred__k">Also</span>
+                    <h3>Software &amp; communication</h3>
+                    <p>Excellent background in computer software. Very good communication skills.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- ============ CONTACT ============ -->
+        <section class="contact" id="contact" aria-labelledby="h-contact">
+            <div class="marquee" aria-hidden="true">
+                <div class="marquee__row">
+                    <span>Sana'a</span><i></i><span>Socotra</span><i></i><span>Berbera</span><i></i><span>Burao</span><i></i><span>Aden</span><i></i><span>Balbala</span><i></i><span>Tarim</span><i></i><span>Mukalla</span><i></i><span>Wadi Araba</span><i></i><span>Abu Dhabi</span><i></i>
+                </div>
+            </div>
+            <div class="contact__inner">
+                <span class="sec__no">06</span>
+                <h2 id="h-contact" class="contact__title"><span class="mask"><span>Planning a hospital,</span></span> <span class="mask"><span>master plan or</span></span> <span class="mask"><span>housing programme?</span></span></h2>
+                <div class="contact__info">
+                    <p><span>Company</span>HS Group</p>
+                    <p><span>Based in</span>Abu Dhabi, United Arab Emirates</p>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="foot grid">
+    <footer class="foot">
         <span>Eng. Hani Al Sahooly</span>
-        <span>Project Manager / Senior Architect, HS Group</span>
-        <a href="#main">Top ↑</a>
+        <span>Project Manager / Senior Architect · HS Group</span>
+        <a href="#top" data-cursor>Back to top ↑</a>
     </footer>
 
-    <script src="js/site.js?v=4" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="js/main.js?v=5" defer></script>
+    <script type="module" src="js/hero3d.js?v=5"></script>
+    <script type="module" src="js/globe.js?v=5"></script>
 </body>
 </html>
