@@ -1033,6 +1033,11 @@ a:hover.back-to-top {
 		box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.025);
 	}
 
+	/* HS logo is white; make it black while the navbar is transparent over the white header */
+	.navbar:not(.top-nav-collapse) .logo-image img {
+		filter: invert(1);
+	}
+
 	.offcanvas-collapse {
 		position: static;
 		top: auto;
