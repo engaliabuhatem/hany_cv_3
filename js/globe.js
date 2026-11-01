@@ -1,6 +1,6 @@
 /* Countries — interactive 3D globe with arcs from Abu Dhabi.
    Lazy: nothing loads until the section is near the viewport. */
-import * as THREE from "three";
+import * as THREE from "./vendor/three.module.min.js";
 
 const HS = window.HS || { motion: false };
 const section = document.getElementById("countries");
@@ -35,8 +35,8 @@ function loadScript(src) {
 }
 
 async function landLines() {
-    await loadScript("https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js");
-    const topo = await fetch("https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json").then((r) => r.json());
+    await loadScript("js/vendor/topojson-client.min.js");
+    const topo = await fetch("data/countries-110m.json").then((r) => r.json());
     const borders = window.topojson.mesh(topo, topo.objects.countries);
     const pts = [];
     for (const line of borders.coordinates) {

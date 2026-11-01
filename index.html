@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link href="css/site.css?v=8" rel="stylesheet">
+    <link href="css/site.css?v=9" rel="stylesheet">
     <link rel="icon" href="images/favicon.png?v=2">
 
     <script>
@@ -26,16 +26,18 @@
         (function () {
             var d = document.documentElement, pref = null;
             try { pref = localStorage.getItem("motion"); } catch (e) {}
-            var reduce = pref === "off" || (pref === null && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+            /* Motion is on unless the visitor switches it off with the Motion button.
+               If the operating system asks for reduced motion, run a gentler "lite" mode
+               (native scrolling, no custom cursor) instead of removing the experience. */
+            var reduce = pref === "off";
+            var lite = !reduce && pref === null && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
             d.classList.remove("no-js");
             d.classList.add(reduce ? "motion-off" : "motion-on");
+            if (lite) d.classList.add("motion-lite");
             var seen = false;
             try { seen = sessionStorage.getItem("intro") === "1"; } catch (e) {}
             if (!reduce && !seen) d.classList.add("is-loading");
         })();
-    </script>
-    <script type="importmap">
-        { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js" } }
     </script>
 
     <script type="application/ld+json">
@@ -388,11 +390,11 @@
         <a href="#top" data-cursor>Back to top ↑</a>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
-    <script src="js/main.js?v=8" defer></script>
-    <script type="module" src="js/hero3d.js?v=7"></script>
-    <script type="module" src="js/globe.js?v=7"></script>
+    <script src="js/vendor/gsap.min.js" defer></script>
+    <script src="js/vendor/ScrollTrigger.min.js" defer></script>
+    <script src="js/vendor/lenis.min.js" defer></script>
+    <script src="js/main.js?v=9" defer></script>
+    <script type="module" src="js/hero3d.js?v=9"></script>
+    <script type="module" src="js/globe.js?v=9"></script>
 </body>
 </html>

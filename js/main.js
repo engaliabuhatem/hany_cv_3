@@ -13,7 +13,9 @@
         root.classList.remove("is-loading");
     }
     var motion = root.classList.contains("motion-on");
+    var lite = root.classList.contains("motion-lite");
     HS.motion = motion;
+    HS.lite = lite;
 
     /* ---------- Motion toggle (persists, reloads to apply cleanly) ---------- */
     var toggle = document.querySelector(".motion-toggle");
@@ -142,7 +144,7 @@
     var EASE = "expo.out";
 
     /* ---------- Lenis smooth scroll, driven by GSAP's ticker ---------- */
-    if (window.Lenis) {
+    if (window.Lenis && !lite) {
         var lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
         HS.lenis = lenis;
         lenis.on("scroll", function (e) { ScrollTrigger.update(); onScroll(e.scroll); });
@@ -320,7 +322,7 @@
     }
 
     /* ---------- Custom cursor ---------- */
-    if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    if (!lite && matchMedia("(hover: hover) and (pointer: fine)").matches) {
         var cur = document.querySelector(".cursor");
         var dot = cur.querySelector(".cursor__dot"), ring = cur.querySelector(".cursor__ring");
         var dx = gsap.quickTo(dot, "x", { duration: 0.1 }), dy = gsap.quickTo(dot, "y", { duration: 0.1 });

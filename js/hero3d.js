@@ -2,7 +2,7 @@
    A hospital campus (7 buildings, like the Sana'a University teaching hospital)
    inside a city grid. Intro: footprints are drawn, wireframes rise.
    Scroll: design review scan → construction (volumes fill in) → delivery. */
-import * as THREE from "three";
+import * as THREE from "./vendor/three.module.min.js";
 
 const HS = window.HS || { hero: { progress: 1, intro: 1 }, motion: false };
 const host = document.querySelector(".hero__canvas");

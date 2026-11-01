@@ -319,6 +319,8 @@ html.lenis, html.lenis body { height: auto; }
 .marquee__row { display: flex; align-items: center; gap: 40px; width: max-content; font-size: clamp(20px, 2.4vw, 34px); font-stretch: 100%; text-transform: uppercase; letter-spacing: -.03em; font-weight: 500; color: var(--fg-3); white-space: nowrap; }
 .marquee__row i { width: 14px; height: 14px; background: var(--accent); transform: rotate(45deg); flex-shrink: 0; }
 .motion-on .marquee__row { animation: marquee 40s linear infinite; }
+.motion-lite .marquee__row { animation-duration: 90s; }
+.motion-lite .cursor { display: none !important; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 .contact__inner { padding: clamp(64px, 9vw, 140px) var(--gutter) 0; }
 .contact__title { margin-top: 20px; font-size: clamp(28px, 3.8vw, 58px); line-height: 1.05; letter-spacing: -.03em; font-weight: 500; font-stretch: 112%; max-width: 12em; }
